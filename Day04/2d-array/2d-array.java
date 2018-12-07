@@ -10,7 +10,7 @@ public class Solution {
 
     // Complete the hourglassSum function below.
     static int hourglassSum(int[][] arr) {
-        int max = 0;
+        int max = Integer.MIN_VALUE;
 
         for (int i = 0; i <= 3; i++) {
             for (int j = 0; j <= 3; j++) {
