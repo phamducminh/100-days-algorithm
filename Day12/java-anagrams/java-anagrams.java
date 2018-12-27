@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Solution {
 
+    // Runtime: 40 ms, faster than 9.78% of Java online submissions for Valid Anagram.
     static boolean isAnagram(String a, String b) {
         // Complete the function
         int aLength = a.length();
@@ -47,5 +48,63 @@ public class Solution {
         scan.close();
         boolean ret = isAnagram(a, b);
         System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
+
+// Runtime: 7 ms, faster than 42.42% of Java online submissions for Valid Anagram.
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        int sLength = s.length();
+        int tLength = t.length();
+
+        if (sLength != tLength) {
+            return false;
+        }
+        
+        int[] sArr = new int[26];
+
+        for (int i = 0; i < sLength; i++) {
+            sArr[(int) Character.toLowerCase(s.charAt(i)) - 97]++;
+        }
+        
+        for (int i = 0; i < tLength; i++) {
+            int index = (int) Character.toLowerCase(t.charAt(i)) - 97;
+            if (sArr[index] == 0) {
+                return false;
+            }
+            sArr[index]--;
+            if (sArr[index] < 0) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
+
+// Runtime: 3 ms, faster than 89.37% of Java online submissions for Valid Anagram.
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        int sLength = s.length();
+        int tLength = t.length();
+
+        if (sLength != tLength) {
+            return false;
+        }
+        
+        int[] sArr = new int[26];
+
+        for (int i = 0; i < sLength; i++) {
+            sArr[(int) s.charAt(i) - 97]++;
+            sArr[(int) t.charAt(i) - 97]--;
+        }
+        
+        for (int i = 0; i < 26; i++) {
+            if (sArr[i] != 0) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }
