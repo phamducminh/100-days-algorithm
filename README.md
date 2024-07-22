@@ -1,3 +1,3 @@
 # 100-days-algorithm
 
-Starting at 12/3/2018
+Starting at July 22, 2024
